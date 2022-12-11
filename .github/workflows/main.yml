@@ -10,6 +10,8 @@ jobs:
     steps:
       - run: |
           echo A comment on PR $NUMBER
+          echo ${{github.event.pull_request.head.sha}}
+          echo ${{github.sha}}
         env:
           NUMBER: ${{ github.event.issue.number }}
           
@@ -20,7 +22,7 @@ jobs:
           context: 'Test run 22'
           description: 'Passed'
           state: 'success'
-          sha: '98dbc674c0c21d87a29f508766fd7d0d97d4e0b6'
+          sha: ${{github.event.pull_request.head.sha || github.sha}}
 
   issue_commented:
     # This job only runs for issue comments
