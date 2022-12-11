@@ -20,7 +20,7 @@ jobs:
           context: 'Test run 22'
           description: 'Passed'
           state: 'success'
-          sha: 'c74021123a9925d5399a202ded1a0c2942c3b7c0'
+          sha: '98dbc674c0c21d87a29f508766fd7d0d97d4e0b6'
 
   issue_commented:
     # This job only runs for issue comments
