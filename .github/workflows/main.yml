@@ -12,6 +12,15 @@ jobs:
           echo A comment on PR $NUMBER
         env:
           NUMBER: ${{ github.event.issue.number }}
+          
+      - name: Run status update pr_commented
+        uses: Sibz/github-status-action@v1
+        with: 
+          authToken: ${{secrets.GITHUB_TOKEN}}
+          context: 'Test run'
+          description: 'Passed'
+          state: 'success'
+          sha: ${{github.event.pull_request.head.sha || github.sha}}
 
   issue_commented:
     # This job only runs for issue comments
@@ -24,7 +33,7 @@ jobs:
         env:
           NUMBER: ${{ github.event.issue.number }}
       
-      - name: Run status update
+      - name: Run status update issue_commented
         uses: Sibz/github-status-action@v1
         with: 
           authToken: ${{secrets.GITHUB_TOKEN}}
